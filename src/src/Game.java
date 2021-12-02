@@ -9,20 +9,21 @@ public class Game {
     private JButton contButton;
     Font textFont = new Font("Arial", Font.PLAIN, 16);
 
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JTextPane text;
-    private JTextPane info;
+    static Path a1 = new Path(0, 0, "a1");
+    static Path b1 = new Path(3, 3, "b1");
+    public static Path pathCurrent = b1;
 
     private boolean nar = true;
 
     public static void main(String[] args) {
+        //Path a1 = new Path(0, 0, "a1");
+        pathCurrent.setDialogue();
         new Game();
     }
 
     public Game() {
+
+
         //Make the Window
         window = new JFrame();
         window.setSize(800, 600);
@@ -36,11 +37,12 @@ public class Game {
         narText = new JPanel();
         narText.setBounds(100,100,600,150);
         narText.setBackground(Color.darkGray);
-        textLabel = new JLabel("You are dead. ", SwingConstants.LEFT);
+
+        textLabel = new JLabel(pathCurrent.dialogueCurrent(), SwingConstants.LEFT);
         textLabel.setForeground(Color.white);
         textLabel.setFont(textFont);
 
-        //Continue Button
+        //Buttons
         if (nar) {
             cont = new JPanel();
             cont.setBounds(10, 520, 760, 40);
@@ -51,6 +53,9 @@ public class Game {
             contButton.setPreferredSize(new Dimension(760, 30));
             contButton.setFocusable(false);
             cont.add(contButton);
+        } else {
+            //Choice Buttons
+
         }
 
         narText.add(textLabel);
@@ -60,8 +65,8 @@ public class Game {
         window.setVisible(true);
     }
 
-    public void createGameScreen() {
 
-    }
+
+
 }
 
